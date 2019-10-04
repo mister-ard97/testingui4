@@ -50,8 +50,8 @@ class VerifiedPage extends Component {
         }
 
         return (
-            // <Redirect to='/' />
-            <p>Wishlist</p>
+            <Redirect to='/' />
+            // <p>Wishlist</p>
             )
     }
 }
