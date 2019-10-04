@@ -71,7 +71,7 @@ class Login extends Component {
         return (
             <FacebookLogin
                 appId="522644335167657"
-                autoLoad={true}
+                autoLoad={false}
                 fields="name,email,picture"
                 callback={this.responseFacebook}
                 cssClass="btn btn-primary text-white form-control mt-1"

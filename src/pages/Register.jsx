@@ -30,7 +30,7 @@ class Register extends Component {
             confPassword: this.ConfPassword.value,
             name: this.Name.value,
             email: this.Email.value,
-            address: this.Address.value,
+            // address: this.Address.value,
             UserImage: this.state.UserImageDB
         }
 
