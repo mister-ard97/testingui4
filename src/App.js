@@ -20,7 +20,7 @@ import Register from './pages/Register';
 import WaitingVerification from './pages/WaitingVerification';
 import Verified from './pages/Verified';
 import NotFound from './pages/NotFound';
-
+import BottomNav from './components/bottomNav'
 import Footer from './components/footer'
 
  
@@ -46,10 +46,10 @@ class App extends Component {
     //   )
     // }
     return (
-        <div className='MaCommerce'>
-          <div className='container'>
-            <div className='row'>
-                <div className='offset-3 col-6'>
+        <div className='MaCommerce' >
+          <div className='container' >
+            <div className='row' >
+                <div className='offset-3 col-6 ' >
               <Header />
               <Switch>
 
@@ -71,7 +71,8 @@ class App extends Component {
 
               </Switch>
 
-              <Footer />
+              {/* <Footer /> */}
+                <BottomNav />
                 </div>
             </div>
           </div>
