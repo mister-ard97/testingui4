@@ -26,9 +26,11 @@ class Login extends Component {
     renderButtonLogin = () => {
         if (this.props.loading) {
             return (
-                <div className="spinner-border" role="status">
-                    <span className="sr-only">Loading...</span>
-                </div>
+                <button className='btn btn-primary form-control' disabled value='Login'>
+                    <div className="spinner-border" role="status">
+                        <span className="sr-only">Loading...</span>
+                    </div>
+                </button>
             )
         }
 
@@ -38,9 +40,11 @@ class Login extends Component {
     renderButtonGmail = () => {
         if (this.props.loading) {
             return (
-                <div className="spinner-border" role="status">
-                    <span className="sr-only">Loading...</span>
-                </div>
+                <button className='btn btn-white text-danger form-control mt-1 border' disabled value='Login with Gmail'>
+                    <div className="spinner-border" role="status">
+                        <span className="sr-only">Loading...</span>
+                    </div>
+                </button>
             )
         }
 
@@ -62,9 +66,12 @@ class Login extends Component {
     renderButtonFacebook = () => {
         if (this.props.loading) {
             return (
-                <div className="btn btn-primary text-white form-control mt-1 spinner-border" role="status">
-                    <span className="sr-only">Loading...</span>
-                </div>
+                <button className='btn btn-primary text-white form-control mt-1' disabled value='Login with Facebook'>
+                    <div className="spinner-border" role="status">
+                        <span className="sr-only">Loading...</span>
+                    </div>
+                </button>
+               
             )
         }
 
@@ -82,24 +89,28 @@ class Login extends Component {
     loginWithGoogle = (response) => {
         console.log(response)
         console.log(response.profileObj)
-        let dataGoogle = {
-            email: response.profileObj.email,
-            name: response.profileObj.name,
-            googleId: response.profileObj.googleId,
-        }
-        this.props.userLoginWithGoogle(dataGoogle)
+         if(response) {
+            let dataGoogle = {
+                email: response.profileObj.email,
+                name: response.profileObj.name,
+                googleId: response.profileObj.googleId,
+            }
+            this.props.userLoginWithGoogle(dataGoogle)
+        } 
     }
 
     responseFacebook = (response) => {
         console.log(response)
         console.log(response.profileObj)
-        let dataFacebook = {
-            email: response.email,
-            name: response.name,
-            facebookId: response.id,
-        }
-        console.log(dataFacebook)
-        this.props.userLoginWithFacebook(dataFacebook)
+        if(response.email) {
+            let dataFacebook = {
+                email: response.email,
+                name: response.name,
+                facebookId: response.id,
+            }
+            console.log(dataFacebook)
+            this.props.userLoginWithFacebook(dataFacebook)
+        } 
     }
 
     render() {
@@ -140,7 +151,12 @@ class Login extends Component {
                                         {this.renderButtonGmail()}
                                         {this.renderButtonFacebook()}
                                         <hr />
-                                        <p className='mt-3'>Belum Register?  <Link to='/register'>Register Now!</Link></p>
+                                       {
+                                           this.props.loading ?
+                                                <p className='mt-3'>Belum Register?  Register Now!</p>
+                                                :
+                                                <p className='mt-3'>Belum Register?  <Link to='/register'>Register Now!</Link></p>
+                                       }
                                     </div>
                                 </div>
                             </div>
