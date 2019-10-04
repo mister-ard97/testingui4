@@ -11,8 +11,7 @@ import {
 } from '../actions/types'
 
 const INITIAL_STATE = {
-    FirstName: '',
-    LastName: '',
+    name: '',
     username: '',
     email: '',
     token: '',
@@ -32,8 +31,8 @@ export default (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case USER_LOGIN_SUCCESS:
             return { ...INITIAL_STATE, ...action.payload, loading: false, authChecked: true}
-        case USER_CHANGE_ADDRESS: 
-            return { ...state, FirstName: action.payload.FirstName, LastName: action.payload.LastName, address: action.payload.address}
+        /* case USER_CHANGE_ADDRESS: 
+            return { ...state, FirstName: action.payload.FirstName, LastName: action.payload.LastName, address: action.payload.address} */
         case AUTH_LOGIN_LOADING:
             return {...state, loading: true, error: ''}
         case AUTH_LOADING_FINISHED:

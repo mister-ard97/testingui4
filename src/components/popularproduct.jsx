@@ -84,7 +84,7 @@ class PopularProduct extends Component {
         return (
             <div className='container pt-5'>
                 <h2 className='my-5 pl-2 text-center text-sm-left'>
-                    Product Populer Right Now!!
+                    Penggalangan Dana yang sedang berjalan
                 </h2>
                    <Slider {...settings}>
                         {this.renderPopularProduct()}

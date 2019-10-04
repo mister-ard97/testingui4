@@ -23,18 +23,12 @@ import NotFound from './pages/NotFound';
 
 import Footer from './components/footer'
 
-// admin 
-import AdminDashboard from './pages/admin/adminDashboard';
-import AdminLogin from './pages/admin/adminLogin';
-import AdminRegister from './pages/admin/adminRegister';
-import AdminWaitingVerification from './pages/admin/adminWaitingVer';
-import AdminVerified from './pages/admin/adminVerified';
  
 class App extends Component {
   
   componentDidMount() {
     this.props.KeepLogin();
-    this.props.showCart();
+    // this.props.showCart();
   }
 
   render() {
@@ -53,28 +47,34 @@ class App extends Component {
     // }
     return (
         <div className='MaCommerce'>
-          <Header />
-          <Switch>
-          
-            <Route path='/' component={Home} exact />
-            <Route path='/searchproduct' component={SearchProduct} />
-            <Route path='/productDetail' component={ProductDetail} />
-            <Route path='/cart' component={Cart} />
-            <Route path='/confirm_order' component={ConfirmOrder} />
-            <Route path='/payment' component={Payment} />
-            <Route path='/transaction_list' component={TransactionList} />
-            <Route path='/wishlist' component={Wishlist} />
-            <Route path='/changeAddress' component={ChangeAddress} />
-            <Route path='/login' component={Login} exact />
-            <Route path='/register' component={Register} exact />
-            <Route path='/waitingverification' component={WaitingVerification} />
-            <Route path='/verified' component={Verified} />
-            <Route path='*' component={NotFound} />
+          <div className='container'>
+            <div className='row'>
+                <div className='offset-3 col-6'>
+              <Header />
+              <Switch>
 
-            
-          </Switch>
+                <Route path='/' component={Home} exact />
+                <Route path='/searchproduct' component={SearchProduct} />
+                <Route path='/productDetail' component={ProductDetail} />
+                <Route path='/cart' component={Cart} />
+                <Route path='/confirm_order' component={ConfirmOrder} />
+                <Route path='/payment' component={Payment} />
+                <Route path='/transaction_list' component={TransactionList} />
+                <Route path='/wishlist' component={Wishlist} />
+                <Route path='/changeAddress' component={ChangeAddress} />
+                <Route path='/login' component={Login} exact />
+                <Route path='/register' component={Register} exact />
+                <Route path='/waitingverification' component={WaitingVerification} />
+                <Route path='/verified' component={Verified} />
+                <Route path='*' component={NotFound} />
 
-        <Footer />
+
+              </Switch>
+
+              <Footer />
+                </div>
+            </div>
+          </div>
        
         {/* Route Admin */}
         {/* <Route path='/adminDashboard' component={AdminDashboard} />

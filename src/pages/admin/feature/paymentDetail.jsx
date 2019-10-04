@@ -80,8 +80,7 @@ class PaymentDetail extends Component {
                             <p>Nomor Rekening MaCommerce: 1234567890</p>
                             <div className='text-center'>
                                 <h6 className='font-weight-bold'>Send Product To</h6>
-                                <p>{val.firstName} {val.lastName}</p>
-                                <p>Address: {val.addressUser}</p>
+                                <p>{val.name}</p>
                             </div>
                             {
                                 val.status === 10 ?

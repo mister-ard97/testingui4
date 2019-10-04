@@ -26,11 +26,9 @@ class Register extends Component {
         e.preventDefault();
 
         let objUserReg = {
-            username: this.Username.value,
             password: this.Password.value,
             confPassword: this.ConfPassword.value,
-            FirstName: this.FirstName.value,
-            LastName: this.LastName.value,
+            name: this.Name.value,
             email: this.Email.value,
             address: this.Address.value,
             UserImage: this.state.UserImageDB
@@ -88,7 +86,7 @@ class Register extends Component {
               <div id='RegisterPage' >
                   <div className='container py-1'>
                       <div className='row py-1'>
-                          <div className="offset-2 offset-md-3 col-8 col-md-6 py-3">
+                          <div className="col-12 col-md-6 col-lg-12">
                               <div className='py-3 text-center'>
                                   <Link to='/' className='navbar-brand text-dark'>
                                       <span>Ma</span>Commerce
@@ -101,17 +99,9 @@ class Register extends Component {
                                       <form onSubmit={this.handleSubmitRegister}>
                                           <div className="row mb-3">
                                               <div className="col">
-                                                  <label>First Name</label>
-                                                  <input ref={(FirstName) => { this.FirstName = FirstName }} type="text" className="form-control" placeholder="First name" />
+                                                  <label>Full Name</label>
+                                                  <input ref={(Name) => this.Name = Name} type="text" className="form-control" placeholder="Last name" />
                                               </div>
-                                              <div className="col">
-                                                  <label>Last Name</label>
-                                                  <input ref={(LastName) => this.LastName = LastName} type="text" className="form-control" placeholder="Last name" />
-                                              </div>
-                                          </div>
-                                          <div className="form-group">
-                                              <label>Username</label>
-                                              <input ref={(Username) => this.Username = Username} type="text" className="form-control" placeholder="Your Username" maxLength='16' minLength='6' />
                                           </div>
                                           <div className="form-group">
                                               <label>Password</label>
@@ -125,10 +115,6 @@ class Register extends Component {
                                               <label>Email address</label>
                                               <input ref={(Email) => this.Email = Email} type="email" className="form-control" placeholder="Enter email" />
                                               <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
-                                          </div>
-                                          <div className="form-group">
-                                              <label>Alamat</label>
-                                              <textarea ref={(Address) => this.Address = Address} placeholder='Your Address' className='form-control'></textarea>
                                           </div>
                                           <label>Profie Picture</label>
                                           <div className='form-group'>

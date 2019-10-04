@@ -14,11 +14,9 @@ import { URL_API } from '../../helpers/Url_API';
 
 export const onUserRegister = (data) => {
     let {
-        username,
+        name,
         password,
         confPassword,
-        FirstName,
-        LastName,
         email,
         address,
         UserImage
@@ -26,11 +24,9 @@ export const onUserRegister = (data) => {
 
     return (dispatch) => {
         dispatch({type: AUTH_LOGIN_LOADING});
-        if (username === '' ||
+        if (name === '' ||
             password === '' ||
             confPassword === '' ||
-            FirstName === '' ||
-            LastName === '' ||
             email === '' ||
             address === '' ||
             UserImage === '' ) {
@@ -64,18 +60,15 @@ export const onUserRegister = (data) => {
 
                 Axios.post(URL_API + '/user/userRegister', formData, headers)
                     .then((res) => {
-                        let { FirstName, LastName, username, email, token, status, role, address, UserImage } = res.data
+                        let { name, email, token, status, role, UserImage } = res.data
                         localStorage.setItem('token', token);
                         dispatch({
                             type: USER_LOGIN_SUCCESS, payload: {
-                                FirstName,
-                                LastName,
-                                username,
+                                name,
                                 email,
                                 token,
                                 status,
                                 role,
-                                address,
                                 UserImage,
                                 justRegister: true,
                                 loginChecked: true,
@@ -107,13 +100,11 @@ export const EmailVerification = () => {
         }
         Axios.put(URL_API + '/user/userEmailVerification', {}, options)
             .then((res) => {
-                let { FirstName, LastName, username, email, token, status, role, address, UserImage } = res.data
+                let { name, email, token, status, role, address, UserImage } = res.data
                 localStorage.setItem('token', token);
                 dispatch({
                     type: USER_LOGIN_SUCCESS, payload: {
-                        FirstName,
-                        LastName,
-                        username,
+                        name,
                         email,
                         token,
                         status,
@@ -140,18 +131,15 @@ export const resendEmailVerification = (username, email) => {
             email,
         })
         .then((res) => {
-            let { FirstName, LastName, username, email, token, status, role, address, UserImage } = res.data
+            let { name, email, token, status, role, UserImage } = res.data
             localStorage.setItem('token', token);
             dispatch({
                 type: USER_LOGIN_SUCCESS, payload: {
-                    FirstName,
-                    LastName,
-                    username,
+                    name,
                     email,
                     token,
                     status,
                     role,
-                    address,
                     UserImage,
                     justRegister: true,
                     loginChecked: true
@@ -173,13 +161,11 @@ export const userLogin = (username, password) => {
             username, password
         })
         .then((res) => {
-            let { FirstName, LastName, username, email, token, status, role, address, UserImage } = res.data
+            let { name, email, token, status, role, address, UserImage } = res.data
             localStorage.setItem('token', token);
             dispatch({
                 type: USER_LOGIN_SUCCESS, payload: {
-                    FirstName,
-                    LastName,
-                    username,
+                    name,
                     email,
                     token,
                     status,
@@ -208,13 +194,38 @@ export const userLoginWithGoogle = (data) => {
 
         Axios.post(URL_API + '/user/userLoginWithGoogle', {data})
             .then((res) => {
-                let { FirstName, LastName, username, email, token, status, role, address, UserImage } = res.data
+                let { name, email, token, status, role, address, UserImage } = res.data
                 localStorage.setItem('token', token);
                 dispatch({
                     type: USER_LOGIN_SUCCESS, payload: {
-                        FirstName,
-                        LastName,
-                        username,
+                        name,
+                        email,
+                        token,
+                        status,
+                        role,
+                        address,
+                        UserImage,
+                        loginChecked: true
+                    }
+                })
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+    }
+}
+
+export const userLoginWithFacebook = (data) => {
+    return (dispatch) => {
+        dispatch({ type: AUTH_LOGIN_LOADING });
+
+        Axios.post(URL_API + '/user/userLoginWithFacebook', { data })
+            .then((res) => {
+                let { name, email, token, status, role, address, UserImage } = res.data
+                localStorage.setItem('token', token);
+                dispatch({
+                    type: USER_LOGIN_SUCCESS, payload: {
+                        name,
                         email,
                         token,
                         status,
@@ -243,18 +254,15 @@ export const KeepLogin = () => {
 
        Axios.post(URL_API + '/user/userKeepLogin', {}, options)
            .then((res) => {
-               let { FirstName, LastName, username, email, token, status, role, address, UserImage} = res.data
+               let { name, email, token, status, role, UserImage} = res.data
                localStorage.setItem('token', token);
                dispatch({
                    type: USER_LOGIN_SUCCESS, payload: {
-                       FirstName,
-                       LastName,
-                       username,
+                        name,
                        email,
                        token,
                        status,
                        role,
-                       address,
                        UserImage, 
                        loginChecked: true
                    } })
@@ -267,7 +275,7 @@ export const KeepLogin = () => {
 }
 
 export const changeShipmentAddress = (data) => {
-    return (dispatch) => {
+    /* return (dispatch) => {
         const token = localStorage.getItem('token');
         const options = {
             headers: {
@@ -289,7 +297,7 @@ export const changeShipmentAddress = (data) => {
             .catch((err) => {
                console.log(err)
             })
-    }
+    } */
 }
 
 export const userLogOut = () => {

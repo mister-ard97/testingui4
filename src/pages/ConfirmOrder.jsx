@@ -11,8 +11,7 @@ class ConfirmOrder extends Component {
     state = {
         link: '', 
         loadingProcess: false,
-        FirstName: '',
-        LastName: '',
+        name: '',
         Address: '',
         error: '',
         modalNewAddress: false
@@ -37,7 +36,7 @@ class ConfirmOrder extends Component {
     }
 
     sendDataCartToTransaction = () => {
-        if(this.state.Address || this.state.FirstName || this.state.LastName) {
+        if(this.state.Address || this.state.name) {
             let obj = []
             // make callback function for make loadingProcess true
             // make promise to make action creator run first then our setState to move page automatically
@@ -51,9 +50,7 @@ class ConfirmOrder extends Component {
                 this.props.sendCartToTransaction(
                     obj,
                     this.TotalPrice(),
-                    this.state.Address,
-                    this.state.FirstName,
-                    this.state.LastName)
+                    this.state.name)
             })
         } else {
             this.setState({error: 'Harap memilih untuk menggunakan alamat yang mana'})
@@ -122,17 +119,15 @@ class ConfirmOrder extends Component {
     }
 
     addNewAddress = () => {
-        if (this.FirstName.value || this.LastName.value || this.Address.value) {
+        if (this.Name.value || this.Address.value) {
             this.setState({
                 modalNewAddress: false,
-                FirstName: this.FirstName.value,
-                LastName: this.LastName.value,
-                Address: this.Address.value,
+                name: this.name.value,
                 errorModal: ''
             })
         } else {
             this.setState({
-                errorModal: 'Firstname, Lastname atau Address tidak boleh kosong'
+                errorModal: 'Name atau Address tidak boleh kosong'
             })
         }
     }
@@ -150,12 +145,8 @@ class ConfirmOrder extends Component {
                     ModalBody={
                         <form onSubmit={this.addNewAddress}>
                             <div className='form-group'>
-                                <label>FirstName</label>
-                                <input ref={(FirstName) => this.FirstName = FirstName} type="text" className="form-control" placeholder="Enter Your Firstname" required />
-                                <label>LastName</label>
-                                <input ref={(LastName) => this.LastName = LastName} type="text" className="form-control" placeholder="Enter Your Lastname" maxLength='16' minLength='6' required />
-                                <label>Address</label>
-                                <textarea ref={(Address) => this.Address = Address} className='form-control' placeholder='Enter New Address' required></textarea>
+                                <label>Fullname</label>
+                                <input ref={(Name) => this.Name = Name} type="text" className="form-control" placeholder="Enter Your Name" minLength='6' required />
                             </div>
                         </form>
                     }

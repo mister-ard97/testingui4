@@ -142,7 +142,7 @@ class Header extends Component {
                                         {
                                             this.props.loginChecked ?
                                                 <div style={{width: 40}}>
-                                                    <img src={`${URL_API}${this.props.UserImage}`} alt={'User' + this.props.username} className='img-fluid' style={{borderRadius: 40}}/>
+                                                    <img src={`${URL_API}${this.props.UserImage}`} alt={'User' + this.props.name} className='img-fluid' style={{borderRadius: 40}}/>
                                                 </div>
                                                 :
                                                 <div className='bg-warning font-weight-bold rounded px-1'>
@@ -156,7 +156,7 @@ class Header extends Component {
                             }
                             <DropdownMenu right={true} className='px-2 userDropdown' id='loginDropdown'>
                                 {
-                                    this.props.FirstName !== '' ?
+                                    this.props.name !== '' ?
                                         
                                         this.props.justRegister ?
                                             <div>
@@ -166,7 +166,7 @@ class Header extends Component {
                                                     :
                                                     null
                                                 }
-                                                <p>Selamat Bergabung di MaCommerce, {this.props.FirstName}</p>
+                                                <p>Selamat Bergabung di MaCommerce, {this.props.name}</p>
                                                 <Link to='/' onClick={this.userLogOut}> Log Out </Link>
                                                
                                             </div>
@@ -178,7 +178,7 @@ class Header extends Component {
                                                         :
                                                         null
                                                 }
-                                                <p>Selamat Datang Kembali, {this.props.FirstName}</p>
+                                                <p>Selamat Datang Kembali, {this.props.name}</p>
                                                 <Link to='/' onClick={this.userLogOut}> Log Out </Link>
                                             </div>
                                     :
@@ -277,8 +277,8 @@ class Header extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        FirstName: state.register.FirstName,
-        username: state.register.username,
+        name: state.register.name,
+        email: state.register.email,
         justRegister: state.register.justRegister,
         UserImage: state.register.UserImage,
         status: state.register.status,

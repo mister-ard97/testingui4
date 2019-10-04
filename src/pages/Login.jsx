@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import GoogleLogin from 'react-google-login';
+import FacebookLogin from 'react-facebook-login';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { userLogin, cleanError, userLoginWithGoogle } from '../redux/actions';
+import { userLogin, cleanError, userLoginWithGoogle, userLoginWithFacebook } from '../redux/actions';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faKey } from '@fortawesome/free-solid-svg-icons';
 import { checkBg } from '../helpers/stylefunction';
@@ -58,17 +59,47 @@ class Login extends Component {
         )
     }
 
+    renderButtonFacebook = () => {
+        if (this.props.loading) {
+            return (
+                <div className="btn btn-primary text-white form-control mt-1 spinner-border" role="status">
+                    <span className="sr-only">Loading...</span>
+                </div>
+            )
+        }
+
+        return (
+            <FacebookLogin
+                appId="522644335167657"
+                autoLoad={true}
+                fields="name,email,picture"
+                callback={this.responseFacebook}
+                cssClass="btn btn-primary text-white form-control mt-1"
+            />
+        )
+    }
+
     loginWithGoogle = (response) => {
         console.log(response)
         console.log(response.profileObj)
         let dataGoogle = {
             email: response.profileObj.email,
-            FirstName: response.profileObj.givenName,
-            LastName: response.profileObj.familyName,
+            name: response.profileObj.name,
             googleId: response.profileObj.googleId,
-            username: response.profileObj.email.split('@')[0]
         }
         this.props.userLoginWithGoogle(dataGoogle)
+    }
+
+    responseFacebook = (response) => {
+        console.log(response)
+        console.log(response.profileObj)
+        let dataFacebook = {
+            email: response.email,
+            name: response.name,
+            facebookId: response.id,
+        }
+        console.log(dataFacebook)
+        this.props.userLoginWithFacebook(dataFacebook)
     }
 
     render() {
@@ -77,7 +108,7 @@ class Login extends Component {
                 <div id='LoginPage' >
                     <div className='container py-3'>
                         <div className='row py-3'>
-                            <div className="offset-2 offset-md-3 col-8 col-md-6 py-3">
+                            <div className="col-12">
                                 <div className='py-3 text-center'>
                                     <Link to='/' className='navbar-brand text-dark'>
                                         <span>Ma</span>Commerce
@@ -107,6 +138,7 @@ class Login extends Component {
                                             {this.renderButtonLogin()}
                                         </form>
                                         {this.renderButtonGmail()}
+                                        {this.renderButtonFacebook()}
                                         <hr />
                                         <p className='mt-3'>Belum Register?  <Link to='/register'>Register Now!</Link></p>
                                     </div>
@@ -131,4 +163,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, { userLogin, cleanError, userLoginWithGoogle })(Login);
+export default connect(mapStateToProps, { userLogin, cleanError, userLoginWithGoogle, userLoginWithFacebook })(Login);

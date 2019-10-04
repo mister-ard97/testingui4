@@ -16,11 +16,9 @@ class AdminRegister extends Component {
         e.preventDefault();
 
         let objAdminReg = {
-            username: this.Username.value,
             password: this.Password.value,
             confPassword: this.ConfPassword.value,
-            FirstName: this.FirstName.value,
-            LastName: this.LastName.value,
+            name: this.Name.value,
             email: this.Email.value,
             address: this.Address.value
         }
@@ -72,16 +70,8 @@ class AdminRegister extends Component {
                                             <div className="row mb-3">
                                                 <div className="col">
                                                     <label>First Name</label>
-                                                    <input ref={(FirstName) => { this.FirstName = FirstName }} type="text" className="form-control" placeholder="First name" />
+                                                    <input ref={(Name) => { this.Name = Name }} type="text" className="form-control" placeholder="Fullname" />
                                                 </div>
-                                                <div className="col">
-                                                    <label>Last Name</label>
-                                                    <input ref={(LastName) => this.LastName = LastName} type="text" className="form-control" placeholder="Last name" />
-                                                </div>
-                                            </div>
-                                            <div className="form-group">
-                                                <label>Username</label>
-                                                <input ref={(Username) => this.Username = Username} type="text" className="form-control" placeholder="Your Username" maxLength='16' minLength='6' />
                                             </div>
                                             <div className="form-group">
                                                 <label>Password</label>

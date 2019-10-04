@@ -30,7 +30,7 @@ class SideBarAdmin extends Component {
                                     </div>
                                     :
                                      <div>
-                                            <p className="text-info my-3">{this.props.FirstName + ' ' + this.props.LastName}</p>
+                                            <p className="text-info my-3">{this.props.name}</p>
                                             <p className="text-info my-3">{this.props.role}</p>
                                      </div>
                                 }
@@ -60,8 +60,7 @@ class SideBarAdmin extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        FirstName: state.register.FirstName,
-        LastName: state.register.LastName,
+        name: state.register.name,
         role: state.register.role,
         loading: state.register.loading
     }
