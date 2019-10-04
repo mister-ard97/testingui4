@@ -9,19 +9,19 @@ import Header from './components/header';
 import Home from './pages/Home';
 import SearchProduct from './pages/SearchProduct'
 import ProductDetail from './pages/ProductDetail';
-import Cart from './pages/Cart';
+//import Cart from './pages/Cart';
 import ConfirmOrder from './pages/ConfirmOrder';
 import Payment from './pages/Payment';
 import TransactionList from './pages/TransactionList';
-import Wishlist from './pages/Wishlist';
-import ChangeAddress from './pages/ChangeAddress';
+//import Wishlist from './pages/Wishlist';
+// import ChangeAddress from './pages/ChangeAddress';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import WaitingVerification from './pages/WaitingVerification';
 import Verified from './pages/Verified';
 import NotFound from './pages/NotFound';
 import BottomNav from './components/bottomNav'
-import Footer from './components/footer'
+// import Footer from './components/footer'
 
  
 class App extends Component {
@@ -56,12 +56,16 @@ class App extends Component {
                 <Route path='/' component={Home} exact />
                 <Route path='/searchproduct' component={SearchProduct} />
                 <Route path='/productDetail' component={ProductDetail} />
-                <Route path='/cart' component={Cart} />
+                {/* <Route path='/cart' component={Cart} /> */}
                 <Route path='/confirm_order' component={ConfirmOrder} />
                 <Route path='/payment' component={Payment} />
                 <Route path='/transaction_list' component={TransactionList} />
-                <Route path='/wishlist' component={Wishlist} />
+              {
+                /*
+                  <Route path='/wishlist' component={Wishlist} />
                 <Route path='/changeAddress' component={ChangeAddress} />
+                */
+              }
                 <Route path='/login' component={Login} exact />
                 <Route path='/register' component={Register} exact />
                 <Route path='/waitingverification' component={WaitingVerification} />

@@ -87,7 +87,7 @@ class CarouselCustom extends Component {
                     <img src={item.img} alt={'Carousel-' + item.altText} style={{backgroundSize: 'cover'}}/>
                     <div className='carousel-caption text-left pb-0 pt-5 pt-sm-0'>
                         <div className='container d-flex justify-content-end opacity-carousel-items'>
-                            <div className='col-12 py-3 rounded bg-light'>
+                            <div className='col-12 py-2 rounded bg-light'>
                                 <h3>{item.captionHeader}</h3>
                                 <p>{item.caption}</p>
                                 <Link to={item.link}>

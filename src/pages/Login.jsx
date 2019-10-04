@@ -87,8 +87,6 @@ class Login extends Component {
     }
 
     loginWithGoogle = (response) => {
-        console.log(response)
-        console.log(response.profileObj)
          if(response) {
             let dataGoogle = {
                 email: response.profileObj.email,
@@ -100,9 +98,7 @@ class Login extends Component {
     }
 
     responseFacebook = (response) => {
-        console.log(response)
-        console.log(response.profileObj)
-        if(response.email) {
+        if(response) {
             let dataFacebook = {
                 email: response.email,
                 name: response.name,
@@ -122,7 +118,7 @@ class Login extends Component {
                             <div className="col-12">
                                 <div className='py-3 text-center'>
                                     <Link to='/' className='navbar-brand text-dark'>
-                                        <span>Ma</span>Commerce
+                                        Testing<span>Ui</span>
                                  </Link>
                                 </div>
                                 <div className="card px-3">

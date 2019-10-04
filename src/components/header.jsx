@@ -66,7 +66,7 @@ class Header extends Component {
         })
     }
 
-    renderCart = () => {
+    /* renderCart = () => {
         if(this.props.cart) {
             if (this.props.cart.length !== 0) {
                 return this.props.cart.map((val, index) => {
@@ -99,11 +99,12 @@ class Header extends Component {
             }
         }
         
-    }
+    } */
 
     renderCartAccount = (param) => {
         return (
             <div className='navbar-nav-cust d-flex font-weight-normal'>
+                { /*
                 <UncontrolledDropdown nav inNavbar className='mr-2'>
                     <DropdownToggle nav caret>
                         <FontAwesomeIcon icon={faShoppingCart} className={param}/> <span>Cart ({this.props.cartCount})</span>
@@ -127,6 +128,7 @@ class Header extends Component {
                         <Link to='/cart' className='btn btn-warning'>Go To Cart Page</Link>
                     </DropdownMenu>
                 </UncontrolledDropdown>
+                 */ }
 
                         <UncontrolledDropdown nav inNavbar>                            
                             {
@@ -191,7 +193,7 @@ class Header extends Component {
                         </UncontrolledDropdown>
             </div>
         )
-    }
+    } 
 
     renderCategory = () => {
         console.log(this.props.categoryProduct)
@@ -266,7 +268,7 @@ class Header extends Component {
                             {/* Untuk Large Device */}
                             <Nav navbar className='d-flex'>
                                 {this.renderCartAccount('text-black-50')}
-                            </Nav>
+                            </Nav> 
                         </Collapse>
                     </div>
                 </Navbar>
