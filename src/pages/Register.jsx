@@ -86,7 +86,7 @@ class Register extends Component {
               <div id='RegisterPage' >
                   <div className='container py-1'>
                       <div className='row py-1'>
-                          <div className="col-12 col-md-6 col-lg-12">
+                          <div className="col-12">
                               <div className='py-3 text-center'>
                                   <Link to='/' className='navbar-brand text-dark'>
                                       <span>Ma</span>Commerce
