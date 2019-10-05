@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { checkBg } from '../helpers/stylefunction';
+
 import { Redirect, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { EmailVerification } from '../redux/actions';
@@ -7,9 +7,7 @@ import { EmailVerification } from '../redux/actions';
 
 class VerifiedPage extends Component {
     componentDidMount() {
-        document.title = 'Verified'
-        // checkBg('VerifiedPage', 'bg-light');
-        
+        document.title = 'Verified'      
         this.props.EmailVerification()
     }
     

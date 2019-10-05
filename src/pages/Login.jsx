@@ -6,14 +6,12 @@ import { connect } from 'react-redux';
 import { userLogin, cleanError, userLoginWithGoogle, userLoginWithFacebook } from '../redux/actions';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faKey } from '@fortawesome/free-solid-svg-icons';
-import { checkBg } from '../helpers/stylefunction';
 
 
 class Login extends Component {
 
     componentDidMount() {
         document.title = 'Login Page'
-        checkBg('LoginPage', 'bg-light')
         this.props.cleanError();
     }
 

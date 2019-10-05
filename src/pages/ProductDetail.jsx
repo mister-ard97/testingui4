@@ -10,7 +10,6 @@ import { UncontrolledCollapse, CardBody, Card } from 'reactstrap';
 import ScrollspyNav from 'react-scrollspy-nav';
 
 
-import { checkBg } from '../helpers/stylefunction';
 import {
     userAddProduct
 } from '../redux/actions'
@@ -44,9 +43,6 @@ class ProductDetail extends Component {
     componentDidMount() {
         document.title = 'Product Detail'
         window.scrollTo(0, 0);
-        
-        // checkBg('LoginPage', 'bg-light');
-        // checkBg('RegisterPage', 'bg-light');
 
         let parsedQuery = queryString.parse(this.props.location.search)
 

@@ -2,14 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect, Link } from 'react-router-dom';
 import { resendEmailVerification } from '../redux/actions';
-import { checkBg } from '../helpers/stylefunction';;
 
 
 class WaitingVerification extends Component {
     componentDidMount() {
         document.title = 'Waiting Verification'
         window.scrollTo(0, 0);
-        // checkBg('WaitingVerPage', 'bg-light');
     }
 
     resendEmailVerification = () => {

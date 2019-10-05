@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { checkBg } from '../helpers/stylefunction';
+
 import { CustomInput } from 'reactstrap';
 
 import { connect } from 'react-redux';
@@ -18,7 +18,6 @@ class Register extends Component {
     componentDidMount() {
         document.title = 'Register Page'
         window.scrollTo(0, 0);
-        // checkBg('RegisterPage', 'bg-light');
         this.props.cleanError();
     }
 

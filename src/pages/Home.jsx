@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import Carousel from '../components/carousel';
 import PopularProduct from '../components/popularproduct';
-import { checkBg } from '../helpers/stylefunction';
+
 import {showCart} from '../redux/actions'
 import BottomNav from '../components/bottomNav'
 
