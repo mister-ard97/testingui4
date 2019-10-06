@@ -7,11 +7,9 @@ import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { UncontrolledCollapse, Button } from 'reactstrap'
 
 import {
-    getFilteredProduct,
-    getProduct
+    // getFilteredProduct,
+    // getProduct
 } from '../redux/actions';
-
-import CategoryListUI from '../components/categoryListUi';
 
 import { URL_API } from '../helpers/Url_API';
 
@@ -270,13 +268,6 @@ class SearchProduct extends Component {
                                         </div>
                                     </UncontrolledCollapse>
                                </div>
-
-                                {
-                                    this.props.allProduct ?
-                                        <CategoryListUI  />
-                                        :
-                                        <CategoryListUI categoryName={this.props.filteredProduct}/>
-                                }
                             </div>
                         </div>
             </div>
@@ -302,6 +293,6 @@ const mapStateToProps = ({admin}) => {
 }
 
 export default connect(mapStateToProps, {
-    getFilteredProduct,
-    getProduct
+    // getFilteredProduct,
+    // getProduct
 })(SearchProduct);

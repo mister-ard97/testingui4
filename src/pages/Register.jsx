@@ -37,7 +37,6 @@ class Register extends Component {
     }
 
     addUserImageChange = (e) => {
-        console.log(e.target.files)
         if(e.target.files[0]) {
             this.setState({ 
                 UserImageFile: URL.createObjectURL(e.target.files[0]), 
@@ -53,17 +52,6 @@ class Register extends Component {
         }
     }
 
-    renderErrorForm = () => {
-        if(this.props.error.length > 0) {
-            return (
-                <div className="alert alert-danger" role="alert">
-                    {window.scrollTo(0, 0)}
-                    {this.props.error}
-                </div>
-            )
-        }
-    }
-
     renderButtonRegister = () => {
         if(this.props.loading) {
             return (
@@ -73,7 +61,7 @@ class Register extends Component {
             )
         }
 
-        return <button type="submit" className="btn btn-primary form-control">Register</button>
+        return <button onClick={this.handleSubmitRegister} className="btn btn-primary form-control">Register</button>
     }
 
     render() {
@@ -88,13 +76,21 @@ class Register extends Component {
                           <div className="col-12">
                               <div className='py-3 text-center'>
                                   <Link to='/' className='navbar-brand text-dark'>
-                                      <span>Ma</span>Commerce
+                                      Testing<span>Ui</span>
                                  </Link>
                               </div>
                               <div className="card px-3">
                                   <div className="card-body">
                                       <h5 className="card-title mb-3">Register Page</h5>
-                                      {this.renderErrorForm()}
+                                      {
+                                          this.props.error ?
+                                              <div className="alert alert-danger" role="alert">
+                                                  {window.scrollTo(0, 0)}
+                                                  {this.props.error}
+                                              </div>
+                                              :
+                                              null
+                                      }
                                       <form onSubmit={this.handleSubmitRegister}>
                                           <div className="row mb-3">
                                               <div className="col">

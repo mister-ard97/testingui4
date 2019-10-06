@@ -15,10 +15,11 @@ class Login extends Component {
         this.props.cleanError();
     }
 
-    handleSubmitLogin = (e) => {
-        e.preventDefault();
+    handleSubmitLogin = (event) => {
+        event.preventDefault();
 
-        this.props.userLogin(this.Username.value, this.Password.value);
+        //pengecekan di action creator
+        this.props.userLogin(this.Email.value, this.Password.value);
     }
 
     renderButtonLogin = () => {
@@ -32,7 +33,7 @@ class Login extends Component {
             )
         }
 
-        return <button type="submit" className="btn btn-primary form-control">Login</button>
+        return <button type='submit' className="btn btn-primary form-control">Login</button>
     }
 
     renderButtonGmail = () => {
@@ -133,12 +134,17 @@ class Login extends Component {
                                         }
                                         <form onSubmit={this.handleSubmitLogin}>
                                             <div className="form-group">
-                                                <FontAwesomeIcon icon={faUser} /> <label>Username</label>
-                                                <input ref={ (Username) => this.Username = Username } type="text" className="form-control" id="usernameLogin" placeholder="Enter Your Username" required />
+                                                <FontAwesomeIcon icon={faUser} /> <label>Email</label>
+                                                <input ref={ (Email) => this.Email = Email } type="email" className="form-control" id="emailLogin" placeholder="Enter Your Email" required />
                                             </div>
                                             <div className="form-group">
                                                 <FontAwesomeIcon icon={faKey} /> <label>Password</label>
                                                 <input ref={ (Password) => this.Password = Password } type="password" className="form-control" id="passwordLogin" placeholder="Password" maxLength='16' minLength='6' required />
+                                            </div>
+                                            <div className='d-flex justify-content-end'>
+                                                <Link to='/forgotPassword' className='text-info'>
+                                                    <small>Lupa kata sandi?</small>
+                                                </Link>
                                             </div>
                                             {this.renderButtonLogin()}
                                         </form>
@@ -173,4 +179,8 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, { userLogin, cleanError, userLoginWithGoogle, userLoginWithFacebook })(Login);
+export default connect(mapStateToProps, 
+    { userLogin, 
+        cleanError, 
+        userLoginWithGoogle,
+         userLoginWithFacebook })(Login);

@@ -176,7 +176,7 @@ class CarouselCustom extends Component {
 const mapStateToProps = (state) => {
     return {
         username: state.register.username,
-        categoryProduct: state.admin.categoryProduct
+        // categoryProduct: state.admin.categoryProduct
     }
 }
 

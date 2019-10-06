@@ -77,6 +77,7 @@ export const onUserRegister = (data) => {
                         })
                     })
                     .catch((err) => {
+                        console.log(err)
                         if(err.response) {
                             dispatch({
                                 type: AUTH_LOGIN_ERROR, payload: {
@@ -153,12 +154,12 @@ export const resendEmailVerification = (username, email) => {
     }
 }
 
-export const userLogin = (username, password) => {
+export const userLogin = (email, password) => {
     return (dispatch) => {
         dispatch({ type: AUTH_LOGIN_LOADING });
 
         Axios.post(URL_API + '/user/userLogin', {
-            username, password
+            email, password
         })
         .then((res) => {
             let { name, email, token, status, role, address, UserImage } = res.data
@@ -210,7 +211,13 @@ export const userLoginWithGoogle = (data) => {
                 })
             })
             .catch((err) => {
-                console.log(err)
+                if (err.response) {
+                    dispatch({
+                        type: AUTH_LOGIN_ERROR, payload: {
+                            error: err.response.data.message,
+                        }
+                    })
+                }
             })
     }
 }
@@ -237,7 +244,13 @@ export const userLoginWithFacebook = (data) => {
                 })
             })
             .catch((err) => {
-                console.log(err)
+                if (err.response) {
+                    dispatch({
+                        type: AUTH_LOGIN_ERROR, payload: {
+                            error: err.response.data.message,
+                        }
+                    })
+                }
             })
     }
 }

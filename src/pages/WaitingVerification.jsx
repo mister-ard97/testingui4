@@ -35,8 +35,8 @@ class WaitingVerification extends Component {
                             <div className="offset-2 offset-md-3 col-8 col-md-6 py-3">
                                 <div className='py-3 text-center'>
                                     <Link to='/' className='navbar-brand text-dark'>
-                                        <span>Ma</span>Commerce
-                                 </Link>
+                                        Testing<span>Ui</span>
+                                    </Link>
                                 </div>
                                 <div className="card p-3">
                                     {

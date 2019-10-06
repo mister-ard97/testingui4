@@ -6,33 +6,28 @@ import { connect } from 'react-redux';
 
 class BottomNav extends Component{
     state={
-        value : 'null'
+        value : 'null',
+        menuClicked: false
     }
 
     handleChange=(event, newValue)=>{
-        this.setState({ value: newValue})
-    }
-
-    componentDidUpdate() {
-        if(this.props.loading) {
-            console.log(this.props.loading)
-            console.log(this.props.name)
-        }
+        this.setState({ value: newValue, menuClicked: true})
     }
 
     render(){
         return(
-            <div className='container'>
+            <div className='container mt-5'>
                 <div className='row'>
-                <div style={{position: 'fixed', bottom: 0, left: '-0.2%'}} className='offset-3 col-6'>
+                    <div style={{ position: 'fixed', bottom: 0, left: '-0.2%', zIndex: 100 }} className='offset-1 col-10 col-sm-8 offset-sm-2 col-md-6 offset-md-3'>
                     <BottomNavigation value={this.state.value} onChange={this.handleChange}>
                             <BottomNavigationAction 
-                                label="Home" 
+                                label="Home"
                                 value='home' 
                                 icon={<Home />} 
                                 component={Link}
                                 to='/' 
                                 className='mt-2'
+                                showLabel={true}
                             />
                         
                             <BottomNavigationAction 
@@ -42,9 +37,10 @@ class BottomNav extends Component{
                                 component={Link}
                                 to='/' 
                                 className='mt-2'
+                                showLabel={true}
                             />
                         
-                        <BottomNavigationAction label="Test2" value='folder' icon={<Folder/>}/>
+                        {/* <BottomNavigationAction label="Test2" value='folder' icon={<Folder/>}/> */}
 
                         {
                             this.props.loading ?
@@ -76,6 +72,7 @@ class BottomNav extends Component{
                                                 '/user'
                                         }
                                         className='mt-2'
+                                        showLabel={true}
                                     />
                         }
                         

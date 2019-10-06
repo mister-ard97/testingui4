@@ -9,7 +9,7 @@ import BottomNav from '../components/bottomNav'
 
 class Home extends Component {
     componentDidMount() {
-        document.title = 'MaCommerce Online Shop'
+        document.title = 'Testing App'
         window.scrollTo(0, 0);
        
         this.props.showCart()

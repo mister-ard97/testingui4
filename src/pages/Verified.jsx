@@ -7,7 +7,7 @@ import { EmailVerification } from '../redux/actions';
 
 class VerifiedPage extends Component {
     componentDidMount() {
-        document.title = 'Verified'      
+        document.title = 'Verified Account'      
         this.props.EmailVerification()
     }
     
@@ -20,7 +20,7 @@ class VerifiedPage extends Component {
                             <div className="offset-2 offset-md-3 col-8 col-md-6 py-3">
                                 <div className='py-3 text-center'>
                                     <Link to='/' className='navbar-brand text-dark'>
-                                        <span>Ma</span>Commerce
+                                        Testing<span>Ui</span>
                                     </Link>
                                 </div>
                                 <div className="card p-3 font-weight-bold text-center">
@@ -49,7 +49,6 @@ class VerifiedPage extends Component {
 
         return (
             <Redirect to='/' />
-            // <p>Wishlist</p>
             )
     }
 }
