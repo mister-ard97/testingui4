@@ -36,6 +36,7 @@ class ForgotPassword extends Component {
                         successText: `Link untuk reset password telah dikirim ke email ${this.Email.value}`,
                         loadingComponent: false
                     })
+                    this.Email.value = ''
                 })
                 .catch((err) => {
                     if (err.response) {
