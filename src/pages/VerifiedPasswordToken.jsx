@@ -12,7 +12,10 @@ class VerifiedPage extends Component {
     state = {
         loading: true,
         token: null,
-        email: null
+        email: null,
+        error: '',
+        success: '',
+        loadingButton: false
     }
 
     componentDidMount() {
@@ -31,15 +34,49 @@ class VerifiedPage extends Component {
                 this.setState({loading: false, token: params.token, email: res.data})
             })
             .catch((err) => {
-                console.log(err)
-                if(err.response) {
-                    return <Redirect to='/' />
-                }
+                this.setState({
+                    loading: false, token: 'False'
+                })
             })
 
         } else {
             this.setState({loading: false})
             return <Redirect to='/' />
+        }
+    }
+
+    resetPasswordEmail = () => {
+        this.setState({
+            loadingButton: true,
+            error: '',
+            success: ''
+        })
+        if(this.NewPassword.value === this.ConfNewPassword.value) {
+            let data = {
+                email: this.state.email,
+                password: this.NewPassword.value
+            }
+            const options = {
+                headers: {
+                    'Authorization': `Bearer ${this.state.token}`,
+                }
+            }
+
+            Axios.post(URL_API + '/user/newPasswordUser', {data}, options)
+                .then((res) => {
+                    this.setState({
+                        success: 'Password berhasil diubah, Silahkan login',
+                        loadingButton: false
+                    })
+                })
+                .catch((err) => {
+                    console.log(err)
+                })
+        } else {
+            this.setState({
+                error: 'Password dan Confirmation Password Harus Sama',
+                loadingButton: false
+            })
         }
     }
 
@@ -69,17 +106,55 @@ class VerifiedPage extends Component {
                                         Testing<span>Ui</span>
                                     </Link>
                                 </div>
-                                <div className="card p-3 font-weight-bold text-center">
-                                    <p>{this.state.email}</p>
-                                    <div className="form-group mb-2">
-                                        <label>New Password</label>
-                                        <input ref={(NewPassword) => this.NewPassword = NewPassword} type="password" className="form-control" id="newPassword" placeholder="Enter New Password" />
-                                    </div>
-                                    <div className="form-group mb-2">
-                                        <label>Confirm New Password</label>
-                                        <input ref={(ConfNewPassword) => this.ConfNewPassword = ConfNewPassword} type="password" className="form-control" id="confNewPassword" placeholder="Enter Confirmation New Password" />
-                                    </div>
-                                </div>
+                                
+                                {
+                                    this.state.token === 'False' ?
+                                        <div className="card p-3 font-weight-bold text-center">
+                                            <p className='text-danger'>Token has been expired</p>
+                                        </div>
+                                    :
+                                        <div className="card p-3 font-weight-bold text-center">
+                                            {
+                                                this.state.success ?
+                                                    <div className="alert alert-success" role="alert">
+                                                        {window.scrollTo(0,0)}
+                                                        {this.state.success}
+                                                        <Link to='/login'>Login Now!</Link>
+                                                    </div>
+                                                    :
+                                                    null
+                                            }
+                                            {
+                                                this.state.error ?
+                                                    <div className="alert alert-success" role="alert">
+                                                        {window.scrollTo(0, 0)}
+                                                        {this.state.error}
+                                                    </div>
+                                                    :
+                                                    null
+                                            }
+                                            <div className="form-group mb-2">
+                                                <label>New Password</label>
+                                                <input ref={(NewPassword) => this.NewPassword = NewPassword} type="password" className="form-control" id="newPassword" placeholder="Enter New Password" />
+                                            </div>
+                                            <div className="form-group mb-2">
+                                                <label>Confirm New Password</label>
+                                                <input ref={(ConfNewPassword) => this.ConfNewPassword = ConfNewPassword} type="password" className="form-control" id="confNewPassword" placeholder="Enter Confirmation New Password" />
+                                            </div>
+
+                                            {
+                                                this.state.loadingButton ?
+                                                    <button className='form-control btn btn-success' onClick={this.resetPasswordEmail} disabled>
+                                                        <div className="spinner-border text-white" role="status">
+                                                            <span className="sr-only">Loading...</span>
+                                                        </div>
+                                                    </button>
+                                                    :
+                                                    <button className='form-control btn btn-success' onClick={this.resetPasswordEmail}>Change Password</button>
+                                            }
+
+                                        </div>
+                                }
                             </div>
                         </div>
                     </div>
