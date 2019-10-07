@@ -17,7 +17,7 @@ class CarouselCustom extends Component {
             items: [
                 {
                     id: 1,
-                    img: 'https://images.pexels.com/photos/374808/pexels-photo-374808.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+                    img: 'https://firebasestorage.googleapis.com/v0/b/southern-waters-642.appspot.com/o/web_homebanner%2FHERO%20BANNER%20(1).png?alt=media&token=cd5ce45c-3025-4875-a28f-28fa3aa928e1',
                     altText: 'Penggalangan dana poster',
                     captionHeader: 'Mari membantu Sesama dengan membuat penggalangan Dana',
                     link: '/searchproduct?allproduct=true&page=1'
@@ -84,18 +84,10 @@ class CarouselCustom extends Component {
                     onExiting={this.onExiting}
                     onExited={this.onExited}
                 >
-                    <img src={item.img} alt={'Carousel-' + item.altText} style={{backgroundSize: 'cover'}}/>
+                    <img src={item.img} alt={'Carousel-' + item.altText} className='img-fluid' />
                     <div className='carousel-caption text-left pb-0 pt-5 pt-sm-0'>
                         <div className='container d-flex justify-content-end opacity-carousel-items'>
-                            <div className='col-12 py-2 rounded bg-light'>
-                                <h3>{item.captionHeader}</h3>
-                                <p>{item.caption}</p>
-                                <Link to={item.link}>
-                                    <button className='btn btn-warning'>
-                                        Click Here!
-                                    </button>
-                                </Link>
-                            </div>
+                        
                         </div>
                     </div>
                 </CarouselItem>

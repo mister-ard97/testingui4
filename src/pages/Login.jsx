@@ -15,8 +15,8 @@ class Login extends Component {
         this.props.cleanError();
     }
 
-    handleSubmitLogin = (event) => {
-        event.preventDefault();
+    handleSubmitLogin = (e) => {
+        e.preventDefault();
 
         //pengecekan di action creator
         this.props.userLogin(this.Email.value, this.Password.value);

@@ -118,7 +118,7 @@ class VerifiedPage extends Component {
                                                 this.state.success ?
                                                     <div className="alert alert-success" role="alert">
                                                         {window.scrollTo(0,0)}
-                                                        {this.state.success}
+                                                        <p>{this.state.success}</p>
                                                         <Link to='/login'>Login Now!</Link>
                                                     </div>
                                                     :

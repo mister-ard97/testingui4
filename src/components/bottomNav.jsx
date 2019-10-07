@@ -6,12 +6,11 @@ import { connect } from 'react-redux';
 
 class BottomNav extends Component{
     state={
-        value : 'null',
-        menuClicked: false
+        value : 'null'
     }
 
     handleChange=(event, newValue)=>{
-        this.setState({ value: newValue, menuClicked: true})
+        this.setState({ value: newValue})
     }
 
     render(){
@@ -31,16 +30,16 @@ class BottomNav extends Component{
                             />
                         
                             <BottomNavigationAction 
-                                label="Test" 
-                                value='recents' 
+                                label="Kategory" 
+                                value='category' 
                                 icon={<Restore/>}
                                 component={Link}
-                                to='/' 
+                                to='/categoryCampaign' 
                                 className='mt-2'
                                 showLabel={true}
                             />
                         
-                        {/* <BottomNavigationAction label="Test2" value='folder' icon={<Folder/>}/> */}
+                        <BottomNavigationAction label="Test2" value='folder' icon={<Folder/>}/> 
 
                         {
                             this.props.loading ?

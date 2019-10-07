@@ -7,6 +7,8 @@ import './App.css';
 import Header from './components/header';
 
 import Home from './pages/Home';
+import GalangDana from './pages/GalangDana';
+import CategoryCampaign from './pages/categoryCampaign';
 import SearchProduct from './pages/SearchProduct'
 import ProductDetail from './pages/ProductDetail';
 
@@ -23,6 +25,7 @@ import Verified from './pages/Verified';
 import NotFound from './pages/NotFound';
 
 import UserPage from './pages/User'
+import VerificationUser from './pages/userFeature/verificationUser';
 
 import BottomNav from './components/bottomNav'
 
@@ -63,6 +66,8 @@ class App extends Component {
               <Switch>
 
                 <Route path='/' component={Home} exact />
+                <Route path='/galangDana' component={GalangDana} />
+                <Route path='/categoryCampaign' component={CategoryCampaign} />
                 <Route path='/searchproduct' component={SearchProduct} />
                 <Route path='/productDetail' component={ProductDetail} />
 
@@ -76,7 +81,9 @@ class App extends Component {
                 <Route path='/verifiedReset' component={VerifiedResetPassword} />
                 <Route path='/waitingverification' component={WaitingVerification} />
                 <Route path='/verified' component={Verified} />
+                
                 <Route path='/user' component={UserPage} />
+                <Route path='/verificationUser' component={VerificationUser} />
                 <Route path='*' component={NotFound} />
 
 

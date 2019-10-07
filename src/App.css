@@ -51,34 +51,6 @@
   color: black !important;
 }
 
-/* 
-Untuk mengganti background select
-.navbar-brand span, .custom-select {
-  color: #ff9500;
-} */
-
-/* .custom-select {
-  background-color: transparent !important;
-}
-
-.custom-select option {
-  background-color: #1a1a1a;
-  position: relative;
-  top: 10%;
-} 
-Sampai sini
-*/
-
-/*------------ Header 2 ------------*/
-
-/* 
-ketika input button di click
-#SearchProductLgHome:focus {
-    border: 1px solid orange;
-    background-color: grey;
-    color:white;
-} */
-
 /* Navbar Header */
 .SearchCategory .dropdown a.dropdown-toggle.nav-link::after, 
 .navbar-nav-cust .dropdown a.dropdown-toggle.nav-link::after,
@@ -177,6 +149,17 @@ textarea:focus {
 .loginPage {
   align-content: center;
   height: 100%;
+}
+
+/* Button Material Ui*/
+.selected:hover {
+      /* color: #0056b3; */
+    /* text-decoration: underline; */
+}
+
+.selected {
+    /* color: #3f51b5; */
+    /* padding-top: 6px; */
 }
 
 /* ADMIN DASHBOARD */
