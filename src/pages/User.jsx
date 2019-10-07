@@ -2,7 +2,6 @@ import React, { Component }  from 'react'
 import {Link, Redirect} from 'react-router-dom';
 import { connect } from 'react-redux';
 import { userLogOut } from '../redux/actions';
-import verificationUser from '../pages/userFeature/verificationUser';
 
 class UserPage extends Component {
     state = {

@@ -19,14 +19,14 @@ import TransactionList from './pages/TransactionList';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import ForgotPassword from './pages/ForgotPassword';
-import ChangePassword from './pages/userFeature/changePassword'
 import VerifiedResetPassword from './pages/VerifiedPasswordToken';
 import WaitingVerification from './pages/WaitingVerification';
 import Verified from './pages/Verified';
 import NotFound from './pages/NotFound';
 
 import UserPage from './pages/User'
-import VerificationUser from './pages/userFeature/verificationUser';
+import VerificationUser from './pages/UserFeature/verificationUser';
+import ChangePassword from './pages/UserFeature/changePassword'
 
 import BottomNav from './components/bottomNav'
 

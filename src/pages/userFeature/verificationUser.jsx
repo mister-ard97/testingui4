@@ -38,10 +38,10 @@ class verificationUser extends Component {
     render() {
         return (
             <div className='container'>
-                <div className='alert alert-info'>
+                <div className='alert alert-info mt-3'>
                     Verifikasi ini diperlukan ketika user ingin menjadi seorang Campaigner (pembuat Penggalang Dana)
                 </div>
-                <div className='card'>
+                <div className='card border-0'>
                     <h5>User Verification</h5>
                     <div className='form-group'>
                         <label>No. KTP</label>

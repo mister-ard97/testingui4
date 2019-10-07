@@ -211,6 +211,7 @@ export const userLoginWithGoogle = (data) => {
                 })
             })
             .catch((err) => {
+                console.log(err)
                 if (err.response) {
                     dispatch({
                         type: AUTH_LOGIN_ERROR, payload: {
